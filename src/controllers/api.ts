@@ -1,11 +1,11 @@
 import cors from "cors";
 import { Application, Request, Response } from "express";
 
-import CoursesData from "../../data/courses.json";
+import Products from "../../data/products.json";
 
 export const loadApiEndpoints = (app: Application): void => {
-  app.get("/api", (req: Request, res: Response) => {
-    return res.status(200).send(CoursesData);
   app.use(cors());
+  app.get("/api/products", (req: Request, res: Response) => {
+    return res.status(200).send(Products);
   });
 };

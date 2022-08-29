@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    volumes:
+      - ./data/mongo:/data/db:delegated
+    ports:
+      - "27018:27017"
+
+volumes:
+  node_modules:
+  esdata:
+    driver: local

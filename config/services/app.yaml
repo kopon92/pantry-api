@@ -1,3 +1,4 @@
 imports:
   - { resource: ./shared_services.yaml }
   - { resource: ./ui_services.yaml }
+  - { resource: ./products_services.yaml }

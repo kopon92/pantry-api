@@ -4,8 +4,8 @@
 services:
 
   # -- CONTROLLERS --
-  App.Ui.Http.HealthCheckController:
-    class: ../../src/App/Ui/Http/HealthCheckController
+  App.Ui.Http.Product.ProductsGetController:
+    class: ../../src/App/Ui/Http/Product/ProductsGetController
     arguments: []
 
   # -- CLI COMMANDS --

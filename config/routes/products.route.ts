@@ -1,9 +1,14 @@
-import { Express, Request, Response } from "express";
+import { Express } from "express";
 
-import Products from "../../data/products.json";
+import ProductsGetController from "../../src/App/Ui/Http/Product/ProductsGetController";
+import container from "../services";
 
 export const register = (app: Express) => {
-  app.get("/api/products", (req: Request, res: Response) => {
-    return res.status(200).send(Products);
-  });
+  const productsGetController: ProductsGetController = container.get(
+    "App.Ui.Http.Product.ProductsGetController"
+  );
+  app.get(
+    "/api/products",
+    productsGetController.run.bind(ProductsGetController)
+  );
 };

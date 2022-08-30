@@ -1,0 +1,4 @@
+services:
+
+  Shared.Infrastructure.Logger.WinstonLogger: 
+    class: ../../../src/Shared/Infrastructure/Logger/WinstonLogger

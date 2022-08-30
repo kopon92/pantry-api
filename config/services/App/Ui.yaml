@@ -1,0 +1,11 @@
+#  -----------
+# | UI LAYER  |
+#  -----------
+services:
+
+  # -- CONTROLLERS --
+  App.Ui.Http.HealthCheckController:
+    class: ../../../src/App/Ui/Http/HealthCheckController
+    arguments: []
+
+  # -- CLI COMMANDS --

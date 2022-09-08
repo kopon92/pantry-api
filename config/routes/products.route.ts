@@ -9,6 +9,6 @@ export const register = (app: Express) => {
   );
   app.get(
     "/api/products",
-    productsGetController.run.bind(ProductsGetController)
+    productsGetController.run.bind(productsGetController)
   );
 };

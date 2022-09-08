@@ -2,3 +2,22 @@ services:
 
   Shared.Infrastructure.Logger.WinstonLogger: 
     class: ../../src/Shared/Infrastructure/Logger/WinstonLogger
+
+  Shared.MongoConfig:
+    factory:
+      class: ../../src/Shared/Infrastructure/Persistence/Mongo/MongoConfig
+      method: 'createConfig'
+
+  Shared.ConnectionManager:
+    factory:
+      class: ../../src/Shared/Infrastructure/Persistence/Mongo/MongoClientFactory
+      method: 'createClient'
+    arguments: ['dev', '@Shared.MongoConfig']
+
+  Shared.QueryHandlersInformation:
+    class: ../../src/Shared/Infrastructure/QueryBus/QueryHandlersInformation
+    arguments: ['!tagged queryHandler']
+
+  Shared.QueryBus:
+    class: ../../src/Shared/Infrastructure/QueryBus/InMemoryQueryBus
+    arguments: ['@Shared.QueryHandlersInformation']

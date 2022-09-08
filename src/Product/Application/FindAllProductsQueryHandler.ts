@@ -20,6 +20,6 @@ export class FindAllProductsQueryHandler implements QueryHandler<FindAllProducts
       throw new ProductNotExist();
     }
 
-    return new ProductsResponse(products.id.value);
+    return new ProductsResponse(products);
   }
 }

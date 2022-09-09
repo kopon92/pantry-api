@@ -20,14 +20,7 @@ export class JsonProductRepository implements ProductRepository {
   hydrateItems(productsJson:ProductJson[]): Product[] {
     return productsJson.map(
       function (product) {
-        return Product.fromPrimitives({
-          ...product,
-          id: product.id,
-          name: product.name,
-          image: product.image,
-          currentPrice: product.currentPrice,
-          lastShoppingPrice: product.lastShoppingPrice,
-        });
+        return Product.fromPrimitives({...product});
       });
   }
 }

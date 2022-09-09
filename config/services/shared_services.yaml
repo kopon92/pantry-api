@@ -5,7 +5,7 @@ services:
 
   Shared.MongoConfig:
     factory:
-      class: ../../src/Shared/Infrastructure/Persistence/Mongo/MongoConfig
+      class: ../../src/Shared/Infrastructure/Persistence/Mongo/MongoConfigFactory
       method: 'createConfig'
 
   Shared.ConnectionManager:

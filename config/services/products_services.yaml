@@ -4,10 +4,13 @@
 services:
   App.Product.JsonRepository:
     class: ../../src/Product/Infrastructure/Persistence/JsonProductRepository
+  App.Product.MongoRepository:
+    class: ../../src/Product/Infrastructure/Persistence/MongoProductRepository
+    arguments: ['@Shared.ConnectionManager']
   # -- SERVICES --
   App.Product.FindAllProductsQueryHandler:
     class: ../../src/Product/Application/FindAllProductsQueryHandler
-    arguments: ['@App.Product.JsonRepository']
+    arguments: ['@App.Product.MongoRepository']
     tags:
       - { name: 'queryHandler' }
   # -- CONTROLLERS --

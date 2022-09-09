@@ -2,14 +2,10 @@ version: '3.8'
 
 services:
   mongo:
-    image: mongo:4.4
-    restart: always
+    image: mongo:5.0.0
+    environment: 
+      - MONGO_URL=mongodb://mongo:27017/dev
     volumes:
       - ./data/mongo:/data/db:delegated
     ports:
       - "27018:27017"
-
-volumes:
-  node_modules:
-  esdata:
-    driver: local

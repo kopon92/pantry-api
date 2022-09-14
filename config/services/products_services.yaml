@@ -17,3 +17,7 @@ services:
   App.Ui.Http.Product.ProductsGetController:
     class: ../../src/App/Ui/Http/Product/ProductsGetController
     arguments: ['@Shared.QueryBus']
+  # -- CONTROLLERS --
+  App.Ui.Http.Product.ProductPostController:
+    class: ../../src/App/Ui/Http/Product/ProductPostController
+    arguments: ['@Shared.CommandBus']

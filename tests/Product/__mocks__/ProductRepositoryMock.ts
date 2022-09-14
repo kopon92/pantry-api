@@ -1,21 +1,21 @@
 import { ProductRepository } from '../../../src/Product/Domain/ProductRepository';
 import { Product } from '../../../src/Product/Domain/Product';
 import { Nullable } from '../../../src/Shared/Domain/Nullable';
-import { ProductMother } from '../Domain/ProductMother';
 
 export class ProductRepositoryMock implements ProductRepository {
   private mockSearch = jest.fn();
   products: Product[] = [];
 
-  returnOnSearch(products: Product[]) {
+  returnOnSearchAll(products: Product[]) {
     this.products = products;
   }
 
-  async search(): Promise<Nullable<Product[]>> {
-    return this.mockSearch();
+  async searchAll(): Promise<Nullable<Product[]>> {
+    this.mockSearch();
+    return this.products;
   }
 
-  assertSearch() {
+  assertSearchAll() {
     expect(this.mockSearch).toHaveBeenCalled();
   }
 }

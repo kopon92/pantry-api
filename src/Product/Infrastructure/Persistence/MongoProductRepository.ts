@@ -14,13 +14,9 @@ interface ProductMongo {
 }
 export class MongoProductRepository extends MongoRepository<Product> implements ProductRepository {
 
-  public async search(): Promise<Nullable<Product[]>> {
+  public async searchAll(): Promise<Nullable<Product[]>> {
     const collection = await this.collection();
     const document = await collection.find().toArray();
-
-    if (!document) {
-      return null;
-    }
 
     return document ?
       this.hydrateItems(document)

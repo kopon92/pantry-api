@@ -1,7 +1,6 @@
 import { Query } from "../../Shared/Domain/Query";
 import { QueryHandler } from "../../Shared/Domain/QueryHandler";
 import { FindAllProductsQuery } from "./Query/FindAllProductsQuery";
-import Products from "../../../data/products.json";
 import { ProductsResponse } from "./ProductsResponse";
 import { ProductNotExist } from "../Domain/ProductNotExist";
 import { ProductRepository } from "../Domain/ProductRepository";

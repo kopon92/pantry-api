@@ -15,10 +15,6 @@ export class FindAllProductsQueryHandler implements QueryHandler<FindAllProducts
   async handle(_query: FindAllProductsQuery): Promise<ProductsResponse> {
     const products = await this.repository.searchAll();
 
-    if (!products) {
-      throw new ProductNotExist();
-    }
-
     return new ProductsResponse(products);
   }
 }

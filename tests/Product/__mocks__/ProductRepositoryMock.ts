@@ -10,7 +10,7 @@ export class ProductRepositoryMock implements ProductRepository {
     this.products = products;
   }
 
-  async searchAll(): Promise<Nullable<Product[]>> {
+  async searchAll(): Promise<Product[]> {
     this.mockSearch();
     return this.products;
   }

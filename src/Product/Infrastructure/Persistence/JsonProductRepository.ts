@@ -11,10 +11,8 @@ interface ProductJson {
   lastShoppingPrice: number,
 }
 export class JsonProductRepository implements ProductRepository {
-  public async searchAll(): Promise<Nullable<Product[]>> {
-    return productsJson ?
-      this.hydrateItems(productsJson.products)
-      : null;
+  public async searchAll(): Promise<Product[]> {
+    return this.hydrateItems(productsJson.products);
   }
 
   hydrateItems(productsJson:ProductJson[]): Product[] {

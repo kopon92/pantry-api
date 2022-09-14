@@ -1,7 +1,6 @@
 import { Nullable } from "../../../Shared/Domain/Nullable";
 import { Product } from "../../Domain/Product";
 import { ProductRepository } from "../../Domain/ProductRepository";
-import productsJson from '../../../../data/products.json';
 import { MongoRepository } from "../../../Shared/Infrastructure/Persistence/Mongo/MongoRepository";
 
 interface ProductMongo {
@@ -14,13 +13,11 @@ interface ProductMongo {
 }
 export class MongoProductRepository extends MongoRepository<Product> implements ProductRepository {
 
-  public async searchAll(): Promise<Nullable<Product[]>> {
+  public async searchAll(): Promise<Product[]> {
     const collection = await this.collection();
     const document = await collection.find().toArray();
 
-    return document ?
-      this.hydrateItems(document)
-      : null;
+    return this.hydrateItems(document);
   }
 
   hydrateItems(products: any[]): Product[] {

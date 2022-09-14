@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { EnvironmentArranger } from '../arranger/EnvironmentArranger';
+import { EnvironmentArranger } from '../Arranger/EnvironmentArranger';
 
 export class MongoEnvironmentArranger extends EnvironmentArranger {
   constructor(private _client: Promise<MongoClient>) {

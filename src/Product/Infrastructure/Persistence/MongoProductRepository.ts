@@ -12,6 +12,9 @@ interface ProductMongo {
   lastShoppingPrice: number,
 }
 export class MongoProductRepository extends MongoRepository<Product> implements ProductRepository {
+  save(product: Product): Promise<void> {
+    return this.persist(product.id.value, product);
+  }
 
   public async searchAll(): Promise<Product[]> {
     const collection = await this.collection();

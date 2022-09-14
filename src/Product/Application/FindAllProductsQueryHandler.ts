@@ -2,7 +2,7 @@ import { Query } from "../../Shared/Domain/Query";
 import { QueryHandler } from "../../Shared/Domain/QueryHandler";
 import { FindAllProductsQuery } from "./Query/FindAllProductsQuery";
 import { ProductsResponse } from "./ProductsResponse";
-import { ProductNotExist } from "../Domain/ProductNotExist";
+import { ProductNotExist } from "../Domain/Exceptions/ProductNotExist";
 import { ProductRepository } from "../Domain/ProductRepository";
 
 export class FindAllProductsQueryHandler implements QueryHandler<FindAllProductsQuery, ProductsResponse> {

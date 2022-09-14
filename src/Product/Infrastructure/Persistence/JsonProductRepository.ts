@@ -11,6 +11,9 @@ interface ProductJson {
   lastShoppingPrice: number,
 }
 export class JsonProductRepository implements ProductRepository {
+  save(product: Product): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
   public async searchAll(): Promise<Product[]> {
     return this.hydrateItems(productsJson.products);
   }

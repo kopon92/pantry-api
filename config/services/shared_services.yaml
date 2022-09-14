@@ -18,6 +18,14 @@ services:
     class: ../../src/Shared/Infrastructure/QueryBus/QueryHandlersInformation
     arguments: ['!tagged queryHandler']
 
+  Shared.CommandHandlersInformation:
+    class: ../../src/Shared/Infrastructure/CommandBus/CommandHandlersInformation
+    arguments: ['!tagged commandHandler']
+
   Shared.QueryBus:
     class: ../../src/Shared/Infrastructure/QueryBus/InMemoryQueryBus
     arguments: ['@Shared.QueryHandlersInformation']
+
+  Shared.CommandBus:
+    class: ../../src/Shared/Infrastructure/CommandBus/InMemoryCommandBus
+    arguments: ['@Shared.CommandHandlersInformation']

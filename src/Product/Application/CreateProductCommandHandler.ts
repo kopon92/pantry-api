@@ -25,7 +25,7 @@ export class CreateProductCommandHandler implements CommandHandler<CreateProduct
         const lastShoppingPrice = new ProductPrice(command.lastShoppingPrice);
 
         const product = Product.create(name, image, currentPrice, lastShoppingPrice);
-console.log(product)
+
         await this.repository.save(product);
     }
 }

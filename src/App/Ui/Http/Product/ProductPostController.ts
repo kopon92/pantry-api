@@ -37,7 +37,7 @@ export default class ProductPostController implements Controller {
     const currentPrice: number = req.body.currentPrice;
     const lastShoppingPrice: number = req.body.lastShoppingPrice;
     const createProductCommand = new CreateProductCommand({ name, image, currentPrice, lastShoppingPrice });
-console.log(111)
+
     try {
       await this.commandBus.dispatch(createProductCommand);
     } catch (error) {

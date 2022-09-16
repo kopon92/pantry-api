@@ -24,6 +24,8 @@ export class Server {
 
     this.express = express();
     this.express.use(xssFilter());
+    this.express.use(express.json());
+    this.express.use(express.urlencoded({ extended: true }));
     this.express.use(noSniff());
     this.express.use(hidePoweredBy());
     this.express.use(frameguard({ action: "deny" }));

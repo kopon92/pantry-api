@@ -1,4 +1,5 @@
 import { AggregateRoot } from "../../Shared/Domain/AggregateRoot";
+import { Uuid } from "../../Shared/Domain/ValueObject/Uuid";
 import { ProductId } from "./ValueObject/ProductId";
 import { ProductImage } from "./ValueObject/ProductImage";
 import { ProductName } from "./ValueObject/ProductName";
@@ -20,8 +21,8 @@ export class Product extends AggregateRoot {
     this.lastShoppingPrice = lastShoppingPrice;
   }
 
-  static create(id: ProductId, name: ProductName, image: ProductImage, currentPrice: ProductPrice, lastShoppingPrice: ProductPrice): Product {
-    const course = new Product(id, name, image, currentPrice, lastShoppingPrice);
+  static create(name: ProductName, image: ProductImage, currentPrice: ProductPrice, lastShoppingPrice: ProductPrice): Product {
+    const course = new Product(new ProductId(Uuid.random().toString()), name, image, currentPrice, lastShoppingPrice);
 
     return course;
   }

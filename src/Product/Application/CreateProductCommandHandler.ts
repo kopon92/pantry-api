@@ -19,14 +19,13 @@ export class CreateProductCommandHandler implements CommandHandler<CreateProduct
     }
 
     async handle(command: CreateProductCommand): Promise<void> {
-        const id = new ProductId(command.id);
         const name = new ProductName(command.name);
         const image = new ProductImage(command.image);
         const currentPrice = new ProductPrice(command.currentPrice);
         const lastShoppingPrice = new ProductPrice(command.lastShoppingPrice);
 
-        const product = Product.create(id, name, image, currentPrice, lastShoppingPrice);
-
+        const product = Product.create(name, image, currentPrice, lastShoppingPrice);
+console.log(product)
         await this.repository.save(product);
     }
 }

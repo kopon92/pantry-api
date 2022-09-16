@@ -8,7 +8,7 @@ export const register = (app: Express) => {
   const productsGetController: ProductsGetController = container.get(
     "App.Ui.Http.Product.ProductsGetController"
   );
-  const productsPostController: ProductPostController = container.get(
+  const productPostController: ProductPostController = container.get(
     "App.Ui.Http.Product.ProductPostController"
   );
   app.get(
@@ -17,6 +17,7 @@ export const register = (app: Express) => {
   );
   app.post(
     "/api/product",
-    productsPostController.run.bind(productsPostController)
+    ProductPostController.validator(), 
+    productPostController.run.bind(productPostController)
   );
 };

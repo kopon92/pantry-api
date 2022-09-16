@@ -26,7 +26,7 @@ export class MongoProductRepository extends MongoRepository<Product> implements 
   hydrateItems(products: any[]): Product[] {
     return products.map(product => Product.fromPrimitives({
       ...product,
-      id: product.id,
+      id: product._id,
       name: product.name,
       image: product.image,
       currentPrice: product.currentPrice,

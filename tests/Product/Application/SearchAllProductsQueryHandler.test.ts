@@ -1,6 +1,6 @@
 import { ProductMother } from '../Domain/ProductMother';
-import { FindAllProductsQueryHandler } from '../../../src/Product/Application/FindAllProductsQueryHandler';
-import { FindAllProductsQuery } from '../../../src/Product/Application/Query/FindAllProductsQuery';
+import { SearchAllProductsQueryHandler } from '../../../src/Product/Application/SearchAllProductsQueryHandler';
+import { SearchAllProductsQuery } from '../../../src/Product/Application/Query/SearchAllProductsQuery';
 import { ProductRepositoryMock } from '../__mocks__/ProductRepositoryMock';
 import { ProductsResponseMother } from '../Domain/ProductsResponseMother';
 
@@ -11,14 +11,14 @@ describe('SearchAllProducts QueryHandler', () => {
     repository = new ProductRepositoryMock();
   });
 
-  it('should find all products', async () => {
+  it('should search all products', async () => {
     const products = [ProductMother.random(), ProductMother.random(), ProductMother.random()];
 
     repository.returnOnSearchAll(products);
 
-    const handler = new FindAllProductsQueryHandler(repository);
+    const handler = new SearchAllProductsQueryHandler(repository);
 
-    const query = new FindAllProductsQuery();
+    const query = new SearchAllProductsQuery();
     const response = await handler.handle(query);
 
     repository.assertSearchAll();

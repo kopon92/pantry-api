@@ -13,6 +13,11 @@ services:
     arguments: ['@App.Product.MongoRepository']
     tags:
       - { name: 'queryHandler' }
+  App.Product.SearchProductQueryHandler:
+    class: ../../src/Product/Application/SearchProductQueryHandler
+    arguments: ['@App.Product.MongoRepository']
+    tags:
+      - { name: 'queryHandler' }
   App.Product.CreateProductCommandHandler:
     class: ../../src/Product/Application/CreateProductCommandHandler
     arguments: ['@App.Product.MongoRepository']
@@ -21,6 +26,9 @@ services:
   # -- CONTROLLERS --
   App.Ui.Http.Product.SearchAllProductsGetController:
     class: ../../src/App/Ui/Http/Product/SearchAllProductsGetController
+    arguments: ['@Shared.QueryBus']
+  App.Ui.Http.Product.SearchProductGetController:
+    class: ../../src/App/Ui/Http/Product/SearchProductGetController
     arguments: ['@Shared.QueryBus']
   App.Ui.Http.Product.ProductPostController:
     class: ../../src/App/Ui/Http/Product/ProductPostController

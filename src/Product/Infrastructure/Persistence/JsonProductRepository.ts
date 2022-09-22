@@ -2,6 +2,7 @@ import { Nullable } from "../../../Shared/Domain/Nullable";
 import { Product } from "../../Domain/Product";
 import { ProductRepository } from "../../Domain/ProductRepository";
 import productsJson from '../../../../data/products.json';
+import { ProductId } from "../../Domain/ValueObject/ProductId";
 
 interface ProductJson {
   id: string,
@@ -11,6 +12,9 @@ interface ProductJson {
   lastShoppingPrice: number,
 }
 export class JsonProductRepository implements ProductRepository {
+  search(id: ProductId): Promise<Nullable<Product>> {
+    throw new Error("Method not implemented.");
+  }
   save(product: Product): Promise<void> {
     throw new Error("Method not implemented.");
   }

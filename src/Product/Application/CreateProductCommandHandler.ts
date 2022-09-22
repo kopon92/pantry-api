@@ -14,7 +14,7 @@ export class CreateProductCommandHandler implements CommandHandler<CreateProduct
     constructor(repository: ProductRepository) {
         this.repository = repository;
     }
-
+    
     subscribedTo(): Command {
         return CreateProductCommand;
     }

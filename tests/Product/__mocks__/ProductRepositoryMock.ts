@@ -4,12 +4,10 @@ import { Nullable } from '../../../src/Shared/Domain/Nullable';
 import { ProductId } from '../../../src/Product/Domain/ValueObject/ProductId';
 
 export class ProductRepositoryMock implements ProductRepository {
-  delete(id: ProductId): Promise<void> {
-    throw new Error('Method not implemented.');
-  }
   private mockSearchAll = jest.fn();
   private mockSearch = jest.fn();
   private mockSave = jest.fn();
+  private mockDelete = jest.fn();
   product: Nullable<Product> = null;
   products: Product[] = [];
 
@@ -49,5 +47,9 @@ export class ProductRepositoryMock implements ProductRepository {
     const lastSavedProduct = mock.calls[mock.calls.length - 1][0] as Product;
     expect(lastSavedProduct).toBeInstanceOf(Product);
     expect(lastSavedProduct.toPrimitives()).toEqual(expected.toPrimitives());
+  }
+
+  delete(id: ProductId): Promise<void> {
+    return this.mockDelete(id);
   }
 }

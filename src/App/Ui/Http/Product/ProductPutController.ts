@@ -40,10 +40,8 @@ export default class ProductPutController implements Controller {
     const createProductCommand = new CreateProductCommand({ id, name, image, currentPrice, lastShoppingPrice });
 
     try {
-      console.log(1);
       await this.commandBus.dispatch(createProductCommand);
     } catch (error) {
-      console.log(error);
       res.status(httpStatus.INTERNAL_SERVER_ERROR).json(error);
     }
 

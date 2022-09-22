@@ -33,8 +33,6 @@ export class ProductRepositoryMock implements ProductRepository {
   assertLastSavedProductIs(expected: Product): void {
     const mock = this.mockSave.mock;
     const lastSavedProduct = mock.calls[mock.calls.length - 1][0] as Product;
-    console.log(lastSavedProduct);
-    console.log(expected);
     expect(lastSavedProduct).toBeInstanceOf(Product);
     expect(lastSavedProduct.toPrimitives()).toEqual(expected.toPrimitives());
   }

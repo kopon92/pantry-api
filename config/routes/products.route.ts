@@ -1,13 +1,13 @@
 import { Express } from "express";
 
-import ProductsGetController from "../../src/App/Ui/Http/Product/ProductsGetController";
+import SearchAllProductsGetController from "../../src/App/Ui/Http/Product/SearchAllProductsGetController";
 import ProductPostController from "../../src/App/Ui/Http/Product/ProductPostController";
 import ProductPutController from "../../src/App/Ui/Http/Product/ProductPutController";
 import container from "../services";
 
 export const register = (app: Express) => {
-  const productsGetController: ProductsGetController = container.get(
-    "App.Ui.Http.Product.ProductsGetController"
+  const searchAllProductsGetController: SearchAllProductsGetController = container.get(
+    "App.Ui.Http.Product.SearchAllProductsGetController"
   );
   const productPostController: ProductPostController = container.get(
     "App.Ui.Http.Product.ProductPostController"
@@ -17,7 +17,7 @@ export const register = (app: Express) => {
   );
   app.get(
     "/api/products",
-    productsGetController.run.bind(productsGetController)
+    searchAllProductsGetController.run.bind(searchAllProductsGetController)
   );
   app.post(
     "/api/product",

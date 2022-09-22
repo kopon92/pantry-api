@@ -8,8 +8,8 @@ services:
     class: ../../src/Product/Infrastructure/Persistence/MongoProductRepository
     arguments: ['@Shared.ConnectionManager']
   # -- SERVICES --
-  App.Product.FindAllProductsQueryHandler:
-    class: ../../src/Product/Application/FindAllProductsQueryHandler
+  App.Product.SearchAllProductsQueryHandler:
+    class: ../../src/Product/Application/SearchAllProductsQueryHandler
     arguments: ['@App.Product.MongoRepository']
     tags:
       - { name: 'queryHandler' }
@@ -19,8 +19,8 @@ services:
     tags:
       - { name: 'commandHandler' }
   # -- CONTROLLERS --
-  App.Ui.Http.Product.ProductsGetController:
-    class: ../../src/App/Ui/Http/Product/ProductsGetController
+  App.Ui.Http.Product.SearchAllProductsGetController:
+    class: ../../src/App/Ui/Http/Product/SearchAllProductsGetController
     arguments: ['@Shared.QueryBus']
   App.Ui.Http.Product.ProductPostController:
     class: ../../src/App/Ui/Http/Product/ProductPostController

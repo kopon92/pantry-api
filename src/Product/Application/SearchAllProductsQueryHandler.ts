@@ -1,18 +1,17 @@
 import { Query } from "../../Shared/Domain/Query";
 import { QueryHandler } from "../../Shared/Domain/QueryHandler";
-import { FindAllProductsQuery } from "./Query/FindAllProductsQuery";
+import { SearchAllProductsQuery } from "./Query/SearchAllProductsQuery";
 import { ProductsResponse } from "./ProductsResponse";
-import { ProductNotExist } from "../Domain/Exceptions/ProductNotExist";
 import { ProductRepository } from "../Domain/ProductRepository";
 
-export class FindAllProductsQueryHandler implements QueryHandler<FindAllProductsQuery, ProductsResponse> {
+export class SearchAllProductsQueryHandler implements QueryHandler<SearchAllProductsQuery, ProductsResponse> {
     constructor(private repository: ProductRepository) {}
 
   subscribedTo(): Query {
-    return FindAllProductsQuery;
+    return SearchAllProductsQuery;
   }
 
-  async handle(_query: FindAllProductsQuery): Promise<ProductsResponse> {
+  async handle(_query: SearchAllProductsQuery): Promise<ProductsResponse> {
     const products = await this.repository.searchAll();
 
     return new ProductsResponse(products);

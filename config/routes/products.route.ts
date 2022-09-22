@@ -29,6 +29,7 @@ export const register = (app: Express) => {
   );
   app.get(
     "/api/product",
+    SearchProductGetController.validator(), 
     searchProductGetController.run.bind(searchProductGetController)
   );
   app.post(

@@ -5,6 +5,7 @@ import Router from "express-promise-router";
 import { frameguard, hidePoweredBy, noSniff, xssFilter } from "helmet";
 import http from "http";
 import httpStatus from "http-status";
+import cors from "cors";
 
 import { registerRoutes } from "../../../../config/routes";
 import container from "../../../../config/services";
@@ -30,6 +31,7 @@ export class Server {
     this.express.use(hidePoweredBy());
     this.express.use(frameguard({ action: "deny" }));
     this.express.use(compression());
+    this.express.use(cors({origin: '*'}));
     this.express.use(router);
 
     this.logger = container.get("Shared.Infrastructure.Logger.WinstonLogger");

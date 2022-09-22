@@ -17,7 +17,6 @@ export default class SearchAllProductsGetController implements Controller {
 
     res.header("Access-Control-Allow-Origin", "*");
 
-
     res.status(httpStatus.OK).send(
       queryResponse
         ? this.toResponse(queryResponse.products)

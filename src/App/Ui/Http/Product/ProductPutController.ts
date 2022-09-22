@@ -37,7 +37,7 @@ export default class ProductPutController implements Controller {
     const image: string = req.body.image;
     const currentPrice: number = req.body.currentPrice;
     const lastShoppingPrice: number = req.body.lastShoppingPrice;
-    const createProductCommand = new CreateProductCommand({ id, name, image, currentPrice, lastShoppingPrice });
+    const createProductCommand = new CreateProductCommand(id, name, image, currentPrice, lastShoppingPrice);
 
     try {
       await this.commandBus.dispatch(createProductCommand);
@@ -45,6 +45,6 @@ export default class ProductPutController implements Controller {
       res.status(httpStatus.INTERNAL_SERVER_ERROR).json(error);
     }
 
-    res.status(httpStatus.CREATED).send();
+    res.status(httpStatus.OK).send();
   }
 }

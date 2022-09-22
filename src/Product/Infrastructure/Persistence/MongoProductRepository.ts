@@ -50,6 +50,11 @@ export class MongoProductRepository extends MongoRepository<Product> implements 
     }));
   }
 
+  public async delete(id: ProductId): Promise<void> {
+    const collection = await this.collection();
+    await collection.deleteOne({ _id: id.value });
+  }
+
   protected moduleName(): string {
     return 'products';
   }

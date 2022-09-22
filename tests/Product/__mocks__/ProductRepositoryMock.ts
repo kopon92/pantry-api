@@ -4,6 +4,9 @@ import { Nullable } from '../../../src/Shared/Domain/Nullable';
 import { ProductId } from '../../../src/Product/Domain/ValueObject/ProductId';
 
 export class ProductRepositoryMock implements ProductRepository {
+  delete(id: ProductId): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
   private mockSearchAll = jest.fn();
   private mockSearch = jest.fn();
   private mockSave = jest.fn();

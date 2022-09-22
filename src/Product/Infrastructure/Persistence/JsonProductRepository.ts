@@ -12,6 +12,9 @@ interface ProductJson {
   lastShoppingPrice: number,
 }
 export class JsonProductRepository implements ProductRepository {
+  delete(id: ProductId): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
   search(id: ProductId): Promise<Nullable<Product>> {
     throw new Error("Method not implemented.");
   }

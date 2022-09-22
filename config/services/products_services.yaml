@@ -23,6 +23,12 @@ services:
     arguments: ['@App.Product.MongoRepository']
     tags:
       - { name: 'commandHandler' }
+      - { name: 'queryHandler' }
+  App.Product.DeleteProductCommandHandler:
+    class: ../../src/Product/Application/DeleteProductCommandHandler
+    arguments: ['@App.Product.MongoRepository']
+    tags:
+      - { name: 'commandHandler' }
   # -- CONTROLLERS --
   App.Ui.Http.Product.SearchAllProductsGetController:
     class: ../../src/App/Ui/Http/Product/SearchAllProductsGetController
@@ -35,4 +41,7 @@ services:
     arguments: ['@Shared.CommandBus']
   App.Ui.Http.Product.ProductPutController:
     class: ../../src/App/Ui/Http/Product/ProductPutController
+    arguments: ['@Shared.CommandBus']
+  App.Ui.Http.Product.ProductDeleteController:
+    class: ../../src/App/Ui/Http/Product/ProductDeleteController
     arguments: ['@Shared.CommandBus']

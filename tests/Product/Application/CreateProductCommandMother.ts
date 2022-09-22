@@ -6,7 +6,7 @@ import { ProductPriceMother } from '../Domain/ProductPriceMother';
 
 export class CreateProductCommandMother {
   static create(id: string, name: string, image: string, currentPrice: number, lastShoppingPrice: number): CreateProductCommand {
-    return new CreateProductCommand({ id, name, image, currentPrice, lastShoppingPrice });
+    return new CreateProductCommand(id, name, image, currentPrice, lastShoppingPrice);
   }
 
   static random(): CreateProductCommand {

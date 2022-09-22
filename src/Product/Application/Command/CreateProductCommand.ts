@@ -15,7 +15,7 @@ export class CreateProductCommand extends Command {
     currentPrice: number;
     lastShoppingPrice: number;
 
-    constructor({ id, name, image, currentPrice, lastShoppingPrice }: Params) {
+    constructor(id: string, name: string, image: string, currentPrice: number, lastShoppingPrice: number) {
         super();
         this.id = id;
         this.name = name;

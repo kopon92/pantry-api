@@ -2,15 +2,8 @@ import { Nullable } from "../../../Shared/Domain/Nullable";
 import { Product } from "../../Domain/Product";
 import { ProductRepository } from "../../Domain/ProductRepository";
 import { MongoRepository } from "../../../Shared/Infrastructure/Persistence/Mongo/MongoRepository";
+import { ProductId } from "../../Domain/ValueObject/ProductId";
 
-interface ProductMongo {
-  _id: string,
-  id: string,
-  name: string,
-  image: string,
-  currentPrice: number,
-  lastShoppingPrice: number,
-}
 export class MongoProductRepository extends MongoRepository<Product> implements ProductRepository {
   save(product: Product): Promise<void> {
     return this.persist(product.id.value, product);

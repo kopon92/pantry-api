@@ -21,10 +21,10 @@ export class Product extends AggregateRoot {
     this.lastShoppingPrice = lastShoppingPrice;
   }
 
-  static create(name: ProductName, image: ProductImage, currentPrice: ProductPrice, lastShoppingPrice: ProductPrice): Product {
-    const course = new Product(new ProductId(Uuid.random().toString()), name, image, currentPrice, lastShoppingPrice);
+  static create(id: ProductId, name: ProductName, image: ProductImage, currentPrice: ProductPrice, lastShoppingPrice: ProductPrice): Product {
+    const product = new Product(id, name, image, currentPrice, lastShoppingPrice);
 
-    return course;
+    return product;
   }
 
   static fromPrimitives(plainData: { id: string, name: string, image: string, currentPrice: number, lastShoppingPrice: number }): Product {

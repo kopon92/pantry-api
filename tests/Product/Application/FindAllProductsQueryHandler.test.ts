@@ -3,9 +3,8 @@ import { FindAllProductsQueryHandler } from '../../../src/Product/Application/Fi
 import { FindAllProductsQuery } from '../../../src/Product/Application/Query/FindAllProductsQuery';
 import { ProductRepositoryMock } from '../__mocks__/ProductRepositoryMock';
 import { ProductsResponseMother } from '../Domain/ProductsResponseMother';
-import { ProductNotExist } from '../../../src/Product/Domain/ProductNotExist';
 
-describe('SearchAllCourses QueryHandler', () => {
+describe('SearchAllProducts QueryHandler', () => {
   let repository: ProductRepositoryMock;
 
   beforeEach(() => {

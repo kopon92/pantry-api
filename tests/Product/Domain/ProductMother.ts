@@ -1,3 +1,4 @@
+import { CreateProductCommand } from '../../../src/Product/Application/Command/CreateProductCommand';
 import { Product } from '../../../src/Product/Domain/Product';
 import { ProductId } from '../../../src/Product/Domain/ValueObject/ProductId';
 import { ProductImage } from '../../../src/Product/Domain/ValueObject/ProductImage';
@@ -26,6 +27,16 @@ export class ProductMother {
       ProductImageMother.random(),
       ProductPriceMother.random(),
       ProductPriceMother.random()
+    );
+  }
+
+  static fromCommand(command: CreateProductCommand): Product {
+    return this.create(
+      ProductIdMother.create(command.id),
+      ProductNameMother.create(command.name),
+      ProductImageMother.create(command.image),
+      ProductPriceMother.create(command.currentPrice),
+      ProductPriceMother.create(command.lastShoppingPrice),
     );
   }
 }

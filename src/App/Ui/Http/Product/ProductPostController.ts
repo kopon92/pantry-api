@@ -6,6 +6,7 @@ import { CreateProductCommand } from '../../../../Product/Application/Command/Cr
 import { ProductAlreadyExists } from '../../../../Product/Domain/Exceptions/ProductAlreadyExists';
 import { CommandBus } from '../../../../Shared/domain/CommandBus';
 import { Controller } from '../Controller';
+import { Uuid } from '../../../../Shared/Domain/ValueObject/Uuid';
 
 export default class ProductPostController implements Controller {
   constructor(private commandBus: CommandBus) { }
@@ -26,22 +27,23 @@ export default class ProductPostController implements Controller {
 
     if (!errors.isEmpty()) {
       res.status(httpStatus.BAD_REQUEST).json({ errors: errors.array() });
-    }      
+    }
 
     await this.createProduct(req, res);
   }
 
   private async createProduct(req: Request, res: Response) {
+    const id: string = Uuid.random().toString();
     const name: string = req.body.name;
     const image: string = req.body.image;
     const currentPrice: number = req.body.currentPrice;
     const lastShoppingPrice: number = req.body.lastShoppingPrice;
-    const createProductCommand = new CreateProductCommand({ name, image, currentPrice, lastShoppingPrice });
+    const createProductCommand = new CreateProductCommand({ id, name, image, currentPrice, lastShoppingPrice });
 
     try {
       await this.commandBus.dispatch(createProductCommand);
     } catch (error) {
-        res.status(httpStatus.INTERNAL_SERVER_ERROR).json(error);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR).json(error);
     }
 
     res.status(httpStatus.CREATED).send();
